@@ -26,6 +26,7 @@ add_subdirectory(Tale/TaleExe)
 #add_subdirectory(Tale/TaleLib)
 add_subdirectory(Tale/TaleTest)
 
+add_subdirectory(CBLibraries/CBEntityComponentSystem)
 add_subdirectory(CBLibraries/CBEntityComponentSystemTest)
 
 
