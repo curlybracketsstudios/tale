@@ -19,3 +19,12 @@ TEST(AGuid, ShouldBeNullWhenConstructed)
 }
 
 //-------------------------------------------------------------------
+
+TEST(AGuid, ShouldNotBeNullWhenCreated)
+{
+	cb::base::GUID guid = cb::base::createGUID();
+
+	ASSERT_THAT(guid.isNull(), Eq(false));
+}
+
+//-------------------------------------------------------------------
