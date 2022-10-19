@@ -7,8 +7,8 @@ using namespace testing;
 
 //-------------------------------------------------------------------
 
-#include "CBEntityComponentSystem/EntityComponentDatabase.h"
-#include "CBEntityComponentSystem/Entity.h"
+#include "CBEntityComponentSystem/Core/EntityComponentDatabase.h"
+#include "CBEntityComponentSystem/Core/Entity.h"
 
 //-------------------------------------------------------------------
 

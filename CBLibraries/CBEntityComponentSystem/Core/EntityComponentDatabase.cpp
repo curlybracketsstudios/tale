@@ -1,10 +1,10 @@
-#include "CBEntityComponentSystem/Entity.h"
+#include "CBEntityComponentSystem/Core/EntityComponentDatabase.h"
 
 //-------------------------------------------------------------------
 // CONSTRUCTOR - DESTRUCTOR
 //-------------------------------------------------------------------
 
-cb::ecs::Entity::Entity()
+cb::ecs::EntityComponentDatabase::EntityComponentDatabase()
 {
 }
 
@@ -12,9 +12,9 @@ cb::ecs::Entity::Entity()
 // PUBLIC
 //-------------------------------------------------------------------
 
-bool cb::ecs::Entity::isNull()
+cb::ecs::Entity cb::ecs::EntityComponentDatabase::createEntity()
 {
-	return false;
+	return cb::ecs::Entity();
 }
 
 //-------------------------------------------------------------------

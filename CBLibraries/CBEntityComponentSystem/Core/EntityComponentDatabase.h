@@ -2,7 +2,7 @@
 
 #include "CBEntityComponentSystem/CBEntityComponentSystemLibrary.h"
 
-#include "CBEntityComponentSystem/Entity.h"
+#include "CBEntityComponentSystem/Core/Entity.h"
 
 namespace cb
 {

@@ -7,11 +7,11 @@ project(${PROJECT_NAME} VERSION 1.0.0 DESCRIPTION "CBEntityComponentSystem is th
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 add_library(${PROJECT_NAME} SHARED
+	Core/Entity.cpp
+	Core/Entity.h
+	Core/EntityComponentDatabase.cpp
+	Core/EntityComponentDatabase.h
 	CBEntityComponentSystemLibrary.h
-	Entity.cpp
-	Entity.h
-	EntityComponentDatabase.cpp
-	EntityComponentDatabase.h
 )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE CBENTITYCOMPONENTSYSTEM_LIBRARY)
