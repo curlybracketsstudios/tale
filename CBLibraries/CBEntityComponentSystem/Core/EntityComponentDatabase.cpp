@@ -20,6 +20,13 @@ cb::ecs::Entity cb::ecs::EntityComponentDatabase::createEntity()
 }
 
 //-------------------------------------------------------------------
+
+bool cb::ecs::EntityComponentDatabase::hasEntity(const cb::ecs::Entity& entity) const
+{
+	return true;
+}
+
+//-------------------------------------------------------------------
 // PROTECTED
 //-------------------------------------------------------------------
 

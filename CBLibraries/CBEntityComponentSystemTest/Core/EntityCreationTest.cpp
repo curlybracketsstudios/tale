@@ -50,3 +50,16 @@ TEST(AnEntityComponentDatabase, ShouldAlwaysCreateUniqueEntities)
 }
 
 //-------------------------------------------------------------------
+
+TEST(AnEntityComponentDatabase, ShouldStoreItsCreatedEntities)
+{
+	cb::ecs::EntityComponentDatabase database;
+
+	cb::ecs::Entity entity = database.createEntity();
+
+	bool result = database.hasEntity(entity);
+
+	ASSERT_THAT(result, Eq(true));
+}
+
+//-------------------------------------------------------------------
