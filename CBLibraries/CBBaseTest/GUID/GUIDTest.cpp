@@ -58,3 +58,13 @@ TEST(AGuid, ShouldBeSmallerThenCreatedGuidWhenItsNull)
 }
 
 //-------------------------------------------------------------------
+
+TEST(AGuid, ShouldBeBiggerThenConstructedGuidWhenItsCreated)
+{
+	cb::base::GUID guid_one;
+	cb::base::GUID guid_two = cb::base::createGUID();
+
+	ASSERT_THAT(guid_two > guid_one, Eq(true));
+}
+
+//-------------------------------------------------------------------
