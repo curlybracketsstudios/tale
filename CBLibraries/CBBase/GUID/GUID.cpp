@@ -40,7 +40,7 @@ bool cb::base::operator==(const cb::base::GUID& lhs, const cb::base::GUID& rhs)
 
 bool cb::base::operator!=(const cb::base::GUID& lhs, const cb::base::GUID& rhs)
 {
-	return lhs.m_value != rhs.m_value;
+	return !(lhs == rhs);
 }
 
 //-------------------------------------------------------------------
@@ -54,7 +54,7 @@ bool cb::base::operator<(const cb::base::GUID& lhs, const cb::base::GUID& rhs)
 
 bool cb::base::operator>(const cb::base::GUID& lhs, const cb::base::GUID& rhs)
 {
-	return lhs.m_value > rhs.m_value;
+	return !(lhs < rhs) && (lhs != rhs);
 }
 
 //-------------------------------------------------------------------
