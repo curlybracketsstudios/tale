@@ -48,3 +48,13 @@ TEST(AGuid, ShouldNotBeEqualToOtherWhenBothCreated)
 }
 
 //-------------------------------------------------------------------
+
+TEST(AGuid, ShouldBeSmallerThenCreatedGuidWhenItsNull)
+{
+	cb::base::GUID guid_one;
+	cb::base::GUID guid_two = cb::base::createGUID();
+
+	ASSERT_THAT(guid_one < guid_two, Eq(true));
+}
+
+//-------------------------------------------------------------------
