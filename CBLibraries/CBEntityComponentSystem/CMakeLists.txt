@@ -8,6 +8,8 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 add_library(${PROJECT_NAME} SHARED
 	CBEntityComponentSystemLibrary.h
+	Entity.cpp
+	Entity.h
 	EntityComponentDatabase.cpp
 	EntityComponentDatabase.h
 )

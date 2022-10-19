@@ -1,0 +1,6 @@
+V- Construct ecdatabase
+
+V- Create entity
+-- refactor to core subfolder
+-- refactor to ecdbcreateentitytest
+-- Entity Component System library
