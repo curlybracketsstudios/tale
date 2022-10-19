@@ -9,10 +9,14 @@ namespace cb
 		class Entity
 		{
 		public:
-CBENTITYCOMPONENTSYSTEMSHARED_EXPORT			Entity();
+CBENTITYCOMPONENTSYSTEMSHARED_EXPORT				Entity();
 
 		public:
-CBENTITYCOMPONENTSYSTEMSHARED_EXPORT bool		isNull();
+CBENTITYCOMPONENTSYSTEMSHARED_EXPORT	bool		isNull();
+										void		setIsNull(bool isNull);
+
+		private:
+			bool	m_is_null;
 		};
 	}
 }

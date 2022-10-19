@@ -14,7 +14,9 @@ cb::ecs::EntityComponentDatabase::EntityComponentDatabase()
 
 cb::ecs::Entity cb::ecs::EntityComponentDatabase::createEntity()
 {
-	return cb::ecs::Entity();
+	cb::ecs::Entity entity;
+	entity.setIsNull(false);
+	return entity;
 }
 
 //-------------------------------------------------------------------

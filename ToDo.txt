@@ -3,5 +3,6 @@ V- Construct ecdatabase
 V- Create entity
 V- refactor to core subfolder
 V- refactor to EntityCreationTest in core
--- non db created entity should be null
+V- non db created entity should be null
+-- two db created entities should not be equal
 -- Entity Component System library

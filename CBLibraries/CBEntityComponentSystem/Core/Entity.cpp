@@ -5,6 +5,7 @@
 //-------------------------------------------------------------------
 
 cb::ecs::Entity::Entity()
+	: m_is_null(true)
 {
 }
 
@@ -14,7 +15,14 @@ cb::ecs::Entity::Entity()
 
 bool cb::ecs::Entity::isNull()
 {
-	return false;
+	return m_is_null;
+}
+
+//-------------------------------------------------------------------
+
+void cb::ecs::Entity::setIsNull(bool isNull)
+{
+	m_is_null = isNull;
 }
 
 //-------------------------------------------------------------------

@@ -29,3 +29,12 @@ TEST(AnEntityComponentDatabase, ShouldReturnAValidEntityWhenItCreatesOne)
 }
 
 //-------------------------------------------------------------------
+
+TEST(AnEntity, ShouldBeNullWhenNotCreatedByEntityComponentDatabase)
+{
+	cb::ecs::Entity entity;
+
+	ASSERT_THAT(entity.isNull(), Eq(true));
+}
+
+//-------------------------------------------------------------------
