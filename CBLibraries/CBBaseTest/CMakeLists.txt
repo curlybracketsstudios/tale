@@ -11,9 +11,10 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/../../)
 
 add_executable(${PROJECT_NAME}
 	CBBaseTest.cpp
+	GUIDCreationTest.cpp
  )
 
-#target_link_libraries(${PROJECT_NAME} CBBase)
+target_link_libraries(${PROJECT_NAME} CBBase)
 
 target_link_libraries(${PROJECT_NAME} gtest)
 target_link_libraries(${PROJECT_NAME} gmock)

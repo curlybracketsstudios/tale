@@ -21,6 +21,8 @@ else()
 endif (NOT Boost_FOUND)
 
 add_library(${PROJECT_NAME} SHARED
+	GUID/GUID.cpp
+	GUID/GUID.h
 	CBBaseLibrary.h
 )
 

@@ -7,6 +7,8 @@ V- non db created entity should be null
 V- two db created entities should not be equal
 V- refactor null check to use the id
 V- introduce cbbase
+V- a guid should be null when constructed
+-- a guid should not be null when created
 -- introduce cbbase guid
 -- refactor entity guid to use cbbase guid
 -- Entity Component System library
