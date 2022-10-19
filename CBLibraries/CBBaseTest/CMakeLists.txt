@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.12)
 
-set(PROJECT_NAME CBEntityComponentSystemTest)
+set(PROJECT_NAME CBBaseTest)
 
-project(${PROJECT_NAME} VERSION 1.0.0 DESCRIPTION "CBEntityComponentSystemTest contains the tests for the CBEntityComponentSystem library")
+project(${PROJECT_NAME} VERSION 1.0.0 DESCRIPTION "CBBaseTest contains the tests for the CBBase library")
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -10,11 +10,10 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/../)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/../../)
 
 add_executable(${PROJECT_NAME}
-	CBEntityComponentSystemTest.cpp
-    Core/EntityCreationTest.cpp
+	CBBaseTest.cpp
  )
 
-target_link_libraries(${PROJECT_NAME} CBEntityComponentSystem)
+#target_link_libraries(${PROJECT_NAME} CBBase)
 
 target_link_libraries(${PROJECT_NAME} gtest)
 target_link_libraries(${PROJECT_NAME} gmock)
