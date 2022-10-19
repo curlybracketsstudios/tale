@@ -1,6 +1,7 @@
 V- Construct ecdatabase
 
 V- Create entity
--- refactor to core subfolder
--- refactor to ecdbcreateentitytest
+V- refactor to core subfolder
+V- refactor to EntityCreationTest in core
+-- non db created entity should be null
 -- Entity Component System library
