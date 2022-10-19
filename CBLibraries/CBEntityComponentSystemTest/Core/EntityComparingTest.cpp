@@ -20,3 +20,17 @@ TEST(AnEntity, ShouldBeEqualToItself)
 	
 	ASSERT_THAT(entity_created, Eq(entity_created));
 }
+
+//-------------------------------------------------------------------
+
+TEST(AnEntity, ShouldBeBiggerThanConstructedEntityIfCreated)
+{
+	cb::ecs::EntityComponentDatabase database;
+
+	cb::ecs::Entity entity_created = database.createEntity();
+	cb::ecs::Entity entity_constructed;
+
+	ASSERT_THAT(entity_created > entity_constructed, Eq(true));
+}
+
+//-------------------------------------------------------------------
