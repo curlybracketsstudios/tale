@@ -28,3 +28,13 @@ TEST(AGuid, ShouldNotBeNullWhenCreated)
 }
 
 //-------------------------------------------------------------------
+
+TEST(AGuid, ShouldBeEqualToOtherWhenBothConstructed)
+{
+	cb::base::GUID guid_one;
+	cb::base::GUID guid_two;
+
+	ASSERT_THAT(guid_one, Eq(guid_two));
+}
+
+//-------------------------------------------------------------------

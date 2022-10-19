@@ -31,6 +31,13 @@ bool cb::base::GUID::isNull() const
 
 //----------------------------------------------------------------------------------------
 
+bool cb::base::operator==(const cb::base::GUID& lhs, const cb::base::GUID& rhs)
+{
+	return lhs.m_value == rhs.m_value;
+}
+
+//----------------------------------------------------------------------------------------
+
 cb::base::GUID cb::base::createGUID()
 {
 	cb::base::GUID guid;
