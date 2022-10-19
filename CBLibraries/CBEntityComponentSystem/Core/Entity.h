@@ -15,12 +15,11 @@ CBENTITYCOMPONENTSYSTEMSHARED_EXPORT							Entity();
 
 		public:
 CBENTITYCOMPONENTSYSTEMSHARED_EXPORT	bool					isNull();
-										void					setIsNull(bool isNull);
 
+										void					setGuid(const boost::uuids::uuid& uuid);
 										boost::uuids::uuid		guid() const;
 
 		private:
-			bool				m_is_null;
 			boost::uuids::uuid	m_id;
 		};
 

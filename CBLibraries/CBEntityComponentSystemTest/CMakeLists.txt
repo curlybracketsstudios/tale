@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 
-set(PROJECT_NAME CBEntityComponentSystemTest)
+set(LIBRARY_TO_TEST CBEntityComponentSystem)
+set(PROJECT_NAME ${LIBRARY_TO_TEST}Test)
 
 project(${PROJECT_NAME} VERSION 1.0.0 DESCRIPTION "CBEntityComponentSystemTest contains the tests for the CBEntityComponentSystem library")
 
@@ -27,10 +28,4 @@ else()
   target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -pedantic -Werror)
 endif()
 
-add_custom_command(TARGET ${PROJECT_NAME}
-                   POST_BUILD
-                   COMMAND ${PROJECT_NAME} --gtest_brief=1
-                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-                   COMMENT "run ${PROJECT_NAME} in ${CMAKE_CURRENT_SOURCE_DIR}"
-                   VERBATIM
-)
+add_custom_target(Run_${PROJECT_NAME} ALL COMMAND ${PROJECT_NAME} --gtest_brief=1)

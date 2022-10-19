@@ -1,14 +1,14 @@
 #include "CBEntityComponentSystem/Core/Entity.h"
 
 #include <boost/uuid/random_generator.hpp>
+#include <boost/uuid/nil_generator.hpp>
 
 //-------------------------------------------------------------------
 // CONSTRUCTOR - DESTRUCTOR
 //-------------------------------------------------------------------
 
 cb::ecs::Entity::Entity()
-	: m_is_null(true)
-	, m_id(boost::uuids::random_generator()())
+	: m_id(boost::uuids::nil_generator()())
 {
 }
 
@@ -18,14 +18,14 @@ cb::ecs::Entity::Entity()
 
 bool cb::ecs::Entity::isNull()
 {
-	return m_is_null;
+	return m_id.is_nil();
 }
 
 //-------------------------------------------------------------------
 
-void cb::ecs::Entity::setIsNull(bool isNull)
+void cb::ecs::Entity::setGuid(const boost::uuids::uuid& uuid)
 {
-	m_is_null = isNull;
+	m_id = uuid;
 }
 
 //-------------------------------------------------------------------
