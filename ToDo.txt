@@ -13,6 +13,6 @@ V- Two guids should be equal when constructed
 V- Two guids should not be equal when created
 V- Refactor guid test to subdirectory
 V- Refactor guid creation test to guid test
--- introduce cbbase guid
--- refactor entity guid to use cbbase guid
+V- introduce cbbase guid
+V- refactor entity guid to use cbbase guid
 -- Entity Component System library
