@@ -20,4 +20,5 @@ V- An ECDatabase should not have an entity it does not create
 V- A null guid should be the smallest
 V- A created guid should be bigger than null guid
 V- refactor guid comparison to only use == and <
+-- An ECDatabase should not have a removed entity anymore
 -- Entity Component System library

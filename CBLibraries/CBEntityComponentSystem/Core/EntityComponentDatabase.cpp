@@ -28,6 +28,17 @@ bool cb::ecs::EntityComponentDatabase::hasEntity(const cb::ecs::Entity& entity) 
 }
 
 //-------------------------------------------------------------------
+
+void cb::ecs::EntityComponentDatabase::removeEntity(const cb::ecs::Entity& entity)
+{
+	auto it_entity = m_all_entities.find(entity);
+	if (it_entity != m_all_entities.end())
+	{
+		m_all_entities.erase(it_entity);
+	}
+}
+
+//-------------------------------------------------------------------
 // PROTECTED
 //-------------------------------------------------------------------
 

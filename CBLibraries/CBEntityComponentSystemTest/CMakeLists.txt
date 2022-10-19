@@ -13,6 +13,7 @@ add_executable(${PROJECT_NAME}
 	CBEntityComponentSystemTest.cpp
 	Core/EntityComparingTest.cpp
     Core/EntityCreationTest.cpp
+	Core/EntityStoringTest.cpp
  )
 
 target_link_libraries(${PROJECT_NAME} CBEntityComponentSystem)
