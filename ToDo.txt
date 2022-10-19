@@ -4,5 +4,7 @@ V- Create entity
 V- refactor to core subfolder
 V- refactor to EntityCreationTest in core
 V- non db created entity should be null
--- two db created entities should not be equal
+V- two db created entities should not be equal
+-- refactor null check to use the id
+-- refactor entity guid to use cbbase guid
 -- Entity Component System library

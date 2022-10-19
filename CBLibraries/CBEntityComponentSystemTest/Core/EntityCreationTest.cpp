@@ -38,3 +38,15 @@ TEST(AnEntity, ShouldBeNullWhenNotCreatedByEntityComponentDatabase)
 }
 
 //-------------------------------------------------------------------
+
+TEST(AnEntityComponentDatabase, ShouldAlwaysCreateUniqueEntities)
+{
+	cb::ecs::EntityComponentDatabase database;
+
+	cb::ecs::Entity first_entity = database.createEntity();
+	cb::ecs::Entity second_entity = database.createEntity();
+
+	ASSERT_THAT(first_entity, Ne(second_entity));
+}
+
+//-------------------------------------------------------------------
