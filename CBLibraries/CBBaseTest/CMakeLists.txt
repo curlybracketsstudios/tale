@@ -10,7 +10,7 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/../)
 include_directories(${CMAKE_CURRENT_LIST_DIR}/../../)
 
 add_executable(${PROJECT_NAME}
-	GUID/GUIDCreationTest.cpp
+	GUID/GUIDTest.cpp
 	CBBaseTest.cpp
  )
 
