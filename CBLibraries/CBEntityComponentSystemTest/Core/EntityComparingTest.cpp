@@ -34,3 +34,15 @@ TEST(AnEntity, ShouldBeBiggerThanConstructedEntityIfCreated)
 }
 
 //-------------------------------------------------------------------
+
+TEST(AnEntity, ShouldBeSmallerThanCreatedEntityIfConstructed)
+{
+	cb::ecs::EntityComponentDatabase database;
+
+	cb::ecs::Entity entity_created = database.createEntity();
+	cb::ecs::Entity entity_constructed;
+
+	ASSERT_THAT(entity_constructed < entity_created, Eq(true));
+}
+
+//-------------------------------------------------------------------
