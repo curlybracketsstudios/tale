@@ -20,6 +20,7 @@ CBBASESHARED_EXPORT	bool				isNull() const;
 			boost::uuids::uuid			m_value;
 		};
 CBBASESHARED_EXPORT bool				operator==(const cb::base::GUID& lhs, const cb::base::GUID& rhs);
+CBBASESHARED_EXPORT bool				operator!=(const cb::base::GUID& lhs, const cb::base::GUID& rhs);
 
 CBBASESHARED_EXPORT cb::base::GUID		createGUID();
 	}

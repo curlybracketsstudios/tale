@@ -10,7 +10,7 @@ V- introduce cbbase
 V- a guid should be null when constructed
 V- a guid should not be null when created
 V- Two guids should be equal when constructed
--- Two guids should not be equal when constructed
+-- Two guids should not be equal when created
 -- introduce cbbase guid
 -- refactor entity guid to use cbbase guid
 -- Entity Component System library
