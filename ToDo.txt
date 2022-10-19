@@ -16,4 +16,7 @@ V- Refactor guid creation test to guid test
 V- introduce cbbase guid
 V- refactor entity guid to use cbbase guid
 V- An ECDatabase should have an entity it creates
+V- An ECDatabase should not have an entity it does not create
+-- test comparison of guids
+-- test comparison of entities
 -- Entity Component System library

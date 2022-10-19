@@ -56,3 +56,10 @@ bool cb::ecs::operator!=(const cb::ecs::Entity& lhs, const cb::ecs::Entity& rhs)
 }
 
 //----------------------------------------------------------------------------------------
+
+bool cb::ecs::operator<(const cb::ecs::Entity& lhs, const cb::ecs::Entity& rhs)
+{
+	return lhs.guid() < rhs.guid();
+}
+
+//----------------------------------------------------------------------------------------

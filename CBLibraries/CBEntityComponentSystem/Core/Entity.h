@@ -25,5 +25,6 @@ CBENTITYCOMPONENTSYSTEMSHARED_EXPORT	bool					isNull();
 
 CBENTITYCOMPONENTSYSTEMSHARED_EXPORT	bool		operator==(const cb::ecs::Entity& lhs, const cb::ecs::Entity& rhs);
 CBENTITYCOMPONENTSYSTEMSHARED_EXPORT	bool		operator!=(const cb::ecs::Entity& lhs, const cb::ecs::Entity& rhs);
+CBENTITYCOMPONENTSYSTEMSHARED_EXPORT	bool		operator<(const cb::ecs::Entity& lhs, const cb::ecs::Entity & rhs);
 	}
 }

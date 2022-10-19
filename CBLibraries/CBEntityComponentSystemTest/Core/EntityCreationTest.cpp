@@ -63,3 +63,16 @@ TEST(AnEntityComponentDatabase, ShouldStoreItsCreatedEntities)
 }
 
 //-------------------------------------------------------------------
+
+TEST(AnEntityComponentDatabase, ShouldNotHaveEntitiesItDoesntCreate)
+{
+	cb::ecs::EntityComponentDatabase database_retrieve;
+	cb::ecs::EntityComponentDatabase database_create;
+	cb::ecs::Entity entity = database_create.createEntity();
+
+	bool result = database_retrieve.hasEntity(entity);
+
+	ASSERT_THAT(result, Eq(false));
+}
+
+//-------------------------------------------------------------------

@@ -16,6 +16,7 @@ cb::ecs::Entity cb::ecs::EntityComponentDatabase::createEntity()
 {
 	cb::ecs::Entity entity;
 	entity.setGuid(cb::base::createGUID());
+	m_all_entities.insert(entity);
 	return entity;
 }
 
@@ -23,7 +24,7 @@ cb::ecs::Entity cb::ecs::EntityComponentDatabase::createEntity()
 
 bool cb::ecs::EntityComponentDatabase::hasEntity(const cb::ecs::Entity& entity) const
 {
-	return true;
+	return m_all_entities.find(entity) != m_all_entities.end();
 }
 
 //-------------------------------------------------------------------
