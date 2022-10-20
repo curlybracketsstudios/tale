@@ -11,6 +11,7 @@ include_directories(${CMAKE_CURRENT_LIST_DIR}/../../)
 
 add_executable(${PROJECT_NAME}
 	CBEntityComponentSystemTest.cpp
+	Core/ComponentCreationTest.cpp
 	Core/EntityComparingTest.cpp
     Core/EntityCreationTest.cpp
 	Core/EntityStoringTest.cpp

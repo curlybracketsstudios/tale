@@ -22,4 +22,8 @@ V- A created guid should be bigger than null guid
 V- refactor guid comparison to only use == and <
 V- An ECDatabase should not have a removed entity anymore
 V- Refactor some test to EntityStoringTest from EntityCreationTest
+V- An ECDatabase should return a valid pointer of the correct type when a component is added to an entity
+-- An ECDatabase should return the correct pointer after the component was added to the entity and retrieved
+-- TestComponent in separate header for reuse
+-- AddComponentToEntity should have constructor args
 -- Entity Component System library
