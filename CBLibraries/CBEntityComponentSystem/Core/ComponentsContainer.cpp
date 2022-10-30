@@ -5,6 +5,7 @@
 //-------------------------------------------------------------------
 
 cb::ecs::ComponentsContainer::ComponentsContainer()
+	: m_components(std::vector<std::shared_ptr<cb::ecs::Component> >())
 {
 }
 
