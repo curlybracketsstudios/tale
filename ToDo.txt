@@ -24,10 +24,13 @@ V- An ECDatabase should not have a removed entity anymore
 V- Refactor some test to EntityStoringTest from EntityCreationTest
 V- An ECDatabase should return a valid pointer of the correct type when a component is added to an entity
 V- An ECDatabase should return the correct pointer after the component was added to the entity and retrieved
--- Refactor to use EntityFactory
+V- Refactor to use EntityFactory
+V- TestComponent in separate header for reuse
+V- A ComponentsContainer should be constructable
 -- Refactor vector of components to ComponentsContainer
+-- It should be able to add component to componentscontainer
+-- component should be retrievable from components container
 -- An ECDatabase should only allow an entity to have one of each type of component
 -- An ECDatabase should return correct component when multiple are added of different types
--- TestComponent in separate header for reuse
 -- AddComponentToEntity should have constructor args
 -- Entity Component System library

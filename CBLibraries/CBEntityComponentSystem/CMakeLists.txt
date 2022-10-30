@@ -9,6 +9,8 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 add_library(${PROJECT_NAME} SHARED
 	Core/Component.cpp
 	Core/Component.h
+	Core/ComponentsContainer.cpp
+	Core/ComponentsContainer.h
 	Core/Entity.cpp
 	Core/Entity.h
 	Core/EntityComponentDatabase.cpp
