@@ -1,3 +1,5 @@
+#include "CBEntityComponentSystemTest/Core/TestComponents.h"
+
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
@@ -13,15 +15,6 @@ using namespace testing;
 #include "CBEntityComponentSystem/Core/EntityFactory.h"
 
 #include <memory>
-
-//-------------------------------------------------------------------
-
-class TestComponent : public cb::ecs::Component
-{
-public:
-			TestComponent() {};
-			~TestComponent() override = default;
-};
 
 //-------------------------------------------------------------------
 
