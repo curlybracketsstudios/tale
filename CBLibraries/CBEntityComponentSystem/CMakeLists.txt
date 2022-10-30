@@ -13,6 +13,8 @@ add_library(${PROJECT_NAME} SHARED
 	Core/Entity.h
 	Core/EntityComponentDatabase.cpp
 	Core/EntityComponentDatabase.h
+	Core/EntityFactory.cpp
+	Core/EntityFactory.h
 	CBEntityComponentSystemLibrary.h
 )
 

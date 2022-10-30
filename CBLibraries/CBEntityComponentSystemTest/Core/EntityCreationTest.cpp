@@ -7,23 +7,14 @@ using namespace testing;
 
 //-------------------------------------------------------------------
 
-#include "CBEntityComponentSystem/Core/EntityComponentDatabase.h"
 #include "CBEntityComponentSystem/Core/Entity.h"
+#include "CBEntityComponentSystem/Core/EntityFactory.h"
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabase, ShouldBeCreatable)
+TEST(AnEntityFactory, ShouldReturnAValidEntityWhenItCreatesOne)
 {
-	cb::ecs::EntityComponentDatabase database;
-}
-
-//-------------------------------------------------------------------
-
-TEST(AnEntityComponentDatabase, ShouldReturnAValidEntityWhenItCreatesOne)
-{
-	cb::ecs::EntityComponentDatabase database;
-
-	cb::ecs::Entity entity = database.createEntity();
+	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
 
 	ASSERT_THAT(entity.isNull(), Eq(false));
 }
@@ -41,10 +32,8 @@ TEST(AnEntity, ShouldBeNullWhenNotCreatedByEntityComponentDatabase)
 
 TEST(AnEntityComponentDatabase, ShouldAlwaysCreateUniqueEntities)
 {
-	cb::ecs::EntityComponentDatabase database;
-
-	cb::ecs::Entity first_entity = database.createEntity();
-	cb::ecs::Entity second_entity = database.createEntity();
+	cb::ecs::Entity first_entity = cb::ecs::EntityFactory::createEntity();
+	cb::ecs::Entity second_entity = cb::ecs::EntityFactory::createEntity();
 
 	ASSERT_THAT(first_entity, Ne(second_entity));
 }

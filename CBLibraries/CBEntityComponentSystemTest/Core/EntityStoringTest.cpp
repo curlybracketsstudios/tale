@@ -7,16 +7,29 @@ using namespace testing;
 
 //-------------------------------------------------------------------
 
+#include "CBEntityComponentSystem/Core/Component.h"
 #include "CBEntityComponentSystem/Core/EntityComponentDatabase.h"
 #include "CBEntityComponentSystem/Core/Entity.h"
+#include "CBEntityComponentSystem/Core/EntityFactory.h"
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabase, ShouldStoreItsCreatedEntities)
+class TestComponent : public cb::ecs::Component
+{
+public:
+	TestComponent() {};
+	~TestComponent() override = default;
+};
+
+//-------------------------------------------------------------------
+
+TEST(AnEntityComponentDatabase, ShouldStoreEntityWhenComponentIsAddedToIt)
 {
 	cb::ecs::EntityComponentDatabase database;
 
-	cb::ecs::Entity entity = database.createEntity();
+	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
+
+	database.addComponentToEntity<TestComponent>(entity);
 
 	bool result = database.hasEntity(entity);
 
@@ -25,11 +38,10 @@ TEST(AnEntityComponentDatabase, ShouldStoreItsCreatedEntities)
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabase, ShouldNotHaveEntitiesItDoesntCreate)
+TEST(AnEntityComponentDatabase, ShouldNotHaveEntitiesItDoesntHaveComponentsFrom)
 {
 	cb::ecs::EntityComponentDatabase database_retrieve;
-	cb::ecs::EntityComponentDatabase database_create;
-	cb::ecs::Entity entity = database_create.createEntity();
+	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
 
 	bool result = database_retrieve.hasEntity(entity);
 
@@ -42,9 +54,9 @@ TEST(AnEntityComponentDatabase, ShouldNotHaveARemovedEntityAnymore)
 {
 	cb::ecs::EntityComponentDatabase database;
 
-	cb::ecs::Entity entity = database.createEntity();
+	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
 
-	ASSERT_THAT(database.hasEntity(entity), Eq(true));
+	database.addComponentToEntity<TestComponent>(entity);
 
 	database.removeEntity(entity);
 
