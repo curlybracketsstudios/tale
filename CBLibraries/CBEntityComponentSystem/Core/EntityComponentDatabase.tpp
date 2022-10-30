@@ -9,11 +9,8 @@
 template<class T>
 std::shared_ptr<T> cb::ecs::EntityComponentDatabase::addComponentToEntity(const cb::ecs::Entity& entity)
 {
-	std::shared_ptr<T> typed_component = std::make_shared<T>();
-
-	m_entity_components[entity].push_back(std::dynamic_pointer_cast<cb::ecs::Component>(typed_component));
-
-	return typed_component;
+	cb::ecs::ComponentsContainer& components_container = m_entity_components[entity];
+	return components_container.addComponent<T>();
 }
 
 //-------------------------------------------------------------------
@@ -24,9 +21,10 @@ std::shared_ptr<T> cb::ecs::EntityComponentDatabase::getComponentFromEntity(cons
 	std::shared_ptr<T> component_from_entity = std::make_shared<T>();
 
 	auto it_entity = m_entity_components.find(entity);
-	if (it_entity != m_entity_components.end() && it_entity->second.size())
+	if (it_entity != m_entity_components.end())
 	{
-		component_from_entity = std::dynamic_pointer_cast<T>(*it_entity->second.begin());
+		cb::ecs::ComponentsContainer& components_container = it_entity->second;
+		component_from_entity = components_container.getComponent<T>();
 	}
 
 	return component_from_entity;

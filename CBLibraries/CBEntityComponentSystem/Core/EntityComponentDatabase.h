@@ -2,6 +2,7 @@
 
 #include "CBEntityComponentSystem/CBEntityComponentSystemLibrary.h"
 
+#include "CBEntityComponentSystem/Core/ComponentsContainer.h" 
 #include "CBEntityComponentSystem/Core/Entity.h"
 
 #include <map>
@@ -13,6 +14,7 @@ namespace cb
 	namespace ecs
 	{
 		class Component;
+		class ComponentsContainer;
 		class EntityComponentDatabase
 		{
 		public:
@@ -28,7 +30,7 @@ CBENTITYCOMPONENTSYSTEMSHARED_EXPORT	void					removeEntity(const cb::ecs::Entity
 										std::shared_ptr<T>		getComponentFromEntity(const cb::ecs::Entity& entity);
 
 		private:
-			std::map<cb::ecs::Entity, std::vector<std::shared_ptr<cb::ecs::Component> > >		m_entity_components;
+			std::map<cb::ecs::Entity, cb::ecs::ComponentsContainer>		m_entity_components;
 		};
 	}
 }
