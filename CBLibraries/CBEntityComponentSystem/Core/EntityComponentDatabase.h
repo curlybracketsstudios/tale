@@ -4,13 +4,15 @@
 
 #include "CBEntityComponentSystem/Core/Entity.h"
 
+#include <map>
 #include <memory>
-#include <set>
+#include <vector>
 
 namespace cb
 {
 	namespace ecs
 	{
+		class Component;
 		class EntityComponentDatabase
 		{
 		public:
@@ -23,10 +25,11 @@ CBENTITYCOMPONENTSYSTEMSHARED_EXPORT	void					removeEntity(const cb::ecs::Entity
 
 /*CBENTITYCOMPONENTSYSTEMSHARED_EXPORT*/template <class T>
 										std::shared_ptr<T>		addComponentToEntity(const cb::ecs::Entity& entity);
-
+/*CBENTITYCOMPONENTSYSTEMSHARED_EXPORT*/template <class T>
+										std::shared_ptr<T>		getComponentFromEntity(const cb::ecs::Entity& entity);
 
 		private:
-			std::set<cb::ecs::Entity>		m_all_entities;
+			std::map<cb::ecs::Entity, std::vector<std::shared_ptr<cb::ecs::Component> > >		m_entity_components;
 		};
 	}
 }

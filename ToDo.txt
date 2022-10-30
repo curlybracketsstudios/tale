@@ -23,7 +23,11 @@ V- refactor guid comparison to only use == and <
 V- An ECDatabase should not have a removed entity anymore
 V- Refactor some test to EntityStoringTest from EntityCreationTest
 V- An ECDatabase should return a valid pointer of the correct type when a component is added to an entity
--- An ECDatabase should return the correct pointer after the component was added to the entity and retrieved
+V- An ECDatabase should return the correct pointer after the component was added to the entity and retrieved
+-- Refactor to use EntityFactory
+-- Refactor vector of components to ComponentsContainer
+-- An ECDatabase should only allow an entity to have one of each type of component
+-- An ECDatabase should return correct component when multiple are added of different types
 -- TestComponent in separate header for reuse
 -- AddComponentToEntity should have constructor args
 -- Entity Component System library

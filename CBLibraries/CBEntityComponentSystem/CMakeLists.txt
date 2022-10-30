@@ -7,6 +7,8 @@ project(${PROJECT_NAME} VERSION 1.0.0 DESCRIPTION "CBEntityComponentSystem is th
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 add_library(${PROJECT_NAME} SHARED
+	Core/Component.cpp
+	Core/Component.h
 	Core/Entity.cpp
 	Core/Entity.h
 	Core/EntityComponentDatabase.cpp
