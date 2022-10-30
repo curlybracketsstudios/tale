@@ -16,7 +16,7 @@ cb::ecs::Entity cb::ecs::EntityComponentDatabase::createEntity()
 {
 	cb::ecs::Entity entity;
 	entity.setGuid(cb::base::createGUID());
-	m_all_entities.insert(entity);
+	m_entity_components.insert(std::make_pair(entity, std::vector<std::shared_ptr<cb::ecs::Component> >()));
 	return entity;
 }
 
@@ -24,17 +24,17 @@ cb::ecs::Entity cb::ecs::EntityComponentDatabase::createEntity()
 
 bool cb::ecs::EntityComponentDatabase::hasEntity(const cb::ecs::Entity& entity) const
 {
-	return m_all_entities.find(entity) != m_all_entities.end();
+	return m_entity_components.find(entity) != m_entity_components.end();
 }
 
 //-------------------------------------------------------------------
 
 void cb::ecs::EntityComponentDatabase::removeEntity(const cb::ecs::Entity& entity)
 {
-	auto it_entity = m_all_entities.find(entity);
-	if (it_entity != m_all_entities.end())
+	auto it_entity = m_entity_components.find(entity);
+	if (it_entity != m_entity_components.end())
 	{
-		m_all_entities.erase(it_entity);
+		m_entity_components.erase(it_entity);
 	}
 }
 
