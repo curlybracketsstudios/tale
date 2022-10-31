@@ -43,7 +43,7 @@ TEST(AnEntityComponentDatabase, ShouldReturnTheSameComponentFromTheEntityWhenItW
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabase, DISABLED_ShouldReturnTheFirstComponentWhenSecondComponentOfSameTypeIsAdded)
+TEST(AnEntityComponentDatabase, ShouldReturnTheFirstComponentWhenSecondComponentOfSameTypeIsAdded)
 {
 	cb::ecs::EntityComponentDatabase database;
 	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
