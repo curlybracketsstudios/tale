@@ -93,6 +93,7 @@ TEST(AnEntityComponentDatabase, ShouldCreateComponentWithCorrectConstructorArgum
 	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
 
 	std::shared_ptr<TestComponent> test_component = database.addComponentToEntity<TestComponent>(entity, 3, .1415);
+	std::shared_ptr<TestComponent> secon_test_component = database.addComponentToEntity<TestComponent>(entity, 1, .618);
 
 	ASSERT_THAT(test_component->m_integer_part, Eq(3));
 	ASSERT_THAT(test_component->m_fractional_part, DoubleEq(.1415));

@@ -43,4 +43,5 @@ V- An ECDatabase should return correct component when multiple are added of diff
 V- An ECDatabase should return nullptr when component which is not yet added is asked for
 V- Refactor ComponentsContainer should know nothing of ComponentIndexGenerator
 V- AddComponentToEntity should have constructor args
+-- When second component of same type is added with other args, nothing should change
 -- Entity Component System library
