@@ -33,12 +33,13 @@ TEST(AComponentsContainer, ShouldBeAbleToAddAComponentOfAGivenType)
 
 //-------------------------------------------------------------------
 
-TEST(AComponentsContainer, ShouldBeAbleToRetreiveTheAddedComponent)
+TEST(AComponentsContainer, ShouldReturn0AsIndexFromFirstAddedComponent)
 {
 	cb::ecs::ComponentsContainer components_container;
 
-	std::shared_ptr<TestComponent> test_component_added = components_container.addComponent<TestComponent>();
-	std::shared_ptr<TestComponent> test_component_retrieved = components_container.getComponent<TestComponent>();
+	std::size_t result = components_container.getComponentIndex<TestComponent>();
 
-	ASSERT_THAT(test_component_added, Eq(test_component_retrieved));
+	ASSERT_THAT(result, Eq(0));
 }
+
+//-------------------------------------------------------------------

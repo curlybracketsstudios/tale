@@ -30,7 +30,8 @@ V- A ComponentsContainer should be constructable
 V- It should be able to add component to componentscontainer
 V- component should be retrievable from components container
 V- Refactor vector of components to ComponentsContainer
--- An ECDatabase should only allow an entity to have one of each type of component
+V- A ComponentContainer should have unique index for each type of component
+X- An ECDatabase should only allow an entity to have one of each type of component
 -- An ECDatabase should return correct component when multiple are added of different types
 -- What about getting a not yet added component from entity -> nullptr?
 -- AddComponentToEntity should have constructor args

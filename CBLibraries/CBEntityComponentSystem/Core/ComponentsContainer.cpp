@@ -6,6 +6,7 @@
 
 cb::ecs::ComponentsContainer::ComponentsContainer()
 	: m_components(std::vector<std::shared_ptr<cb::ecs::Component> >())
+	, m_component_type_to_index(std::unordered_map<std::type_index, std::size_t>())
 {
 }
 

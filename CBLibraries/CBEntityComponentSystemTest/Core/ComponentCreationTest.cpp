@@ -42,3 +42,16 @@ TEST(AnEntityComponentDatabase, ShouldReturnTheSameComponentFromTheEntityWhenItW
 }
 
 //-------------------------------------------------------------------
+
+TEST(AnEntityComponentDatabase, DISABLED_ShouldReturnTheFirstComponentWhenSecondComponentOfSameTypeIsAdded)
+{
+	cb::ecs::EntityComponentDatabase database;
+	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
+	std::shared_ptr<TestComponent> test_component_added_first = database.addComponentToEntity<TestComponent>(entity);
+
+	std::shared_ptr<TestComponent> test_component_added_second = database.addComponentToEntity<TestComponent>(entity);
+
+	ASSERT_THAT(test_component_added_first, Eq(test_component_added_second));
+}
+
+//-------------------------------------------------------------------
