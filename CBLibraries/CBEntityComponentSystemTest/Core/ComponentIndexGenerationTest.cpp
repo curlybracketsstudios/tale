@@ -55,3 +55,17 @@ TEST(AComponentIndexGenerator, ShouldReturn2AsIndexForThirdComponentAdded)
 }
 
 //-------------------------------------------------------------------
+
+TEST(AComponentIndexGenerator, ShouldReturn0AsIndexWhenFirstComponentAddedAgainAfterOthersAreAdded)
+{
+	cb::ecs::ComponentIndexGenerator component_index_generator;
+	component_index_generator.getComponentIndex<TestComponent>();
+	component_index_generator.getComponentIndex<AnotherTestComponent>();
+	component_index_generator.getComponentIndex<AThirdTestComponent>();
+
+	auto result = component_index_generator.getComponentIndex<TestComponent>();
+
+	ASSERT_THAT(result, Eq(0));
+}
+
+//-------------------------------------------------------------------
