@@ -30,7 +30,13 @@ V- A ComponentsContainer should be constructable
 V- It should be able to add component to componentscontainer
 V- component should be retrievable from components container
 V- Refactor vector of components to ComponentsContainer
-V- A ComponentContainer should have unique index for each type of component
+V- A ComponentIndexGenerator should be constructable
+V- A ComponentIndexGenerator should return 0 for first component generated index for
+-- A ComponentIndexGenerator should return 1 for second component generated index for
+-- A ComponentIndexGenerator should return 2 for third component generated index for
+-- A ComponentIndexGenerator should return 0 if index requested of first added after multiple added
+-- Refactor to ComponentIndexGenerator
+X- A ComponentContainer should have unique index for each type of component
 X- An ECDatabase should only allow an entity to have one of each type of component
 -- An ECDatabase should return correct component when multiple are added of different types
 -- What about getting a not yet added component from entity -> nullptr?

@@ -9,26 +9,26 @@ using namespace testing;
 
 //-------------------------------------------------------------------
 
-#include "CBEntityComponentSystem/Core/ComponentsContainer.h"
+#include "CBEntityComponentSystem/Core/ComponentIndexGenerator.h"
 
 #include <memory>
 
 //-------------------------------------------------------------------
 
-TEST(AComponentsContainer, ShouldBeConstructable)
+TEST(AComponentIndexGenerator, ShouldBeConstructable)
 {
-	cb::ecs::ComponentsContainer;
+	cb::ecs::ComponentIndexGenerator component_index_generator;
 }
 
 //-------------------------------------------------------------------
 
-TEST(AComponentsContainer, ShouldBeAbleToAddAComponentOfAGivenType)
+TEST(AComponentIndexGenerator, ShouldReturn0AsIndexForFirstComponentAdded)
 {
-	cb::ecs::ComponentsContainer components_container;
+	cb::ecs::ComponentIndexGenerator component_index_generator;
 
-	std::shared_ptr<TestComponent> test_component = components_container.addComponent<TestComponent>();
+	auto result = component_index_generator.getComponentIndex<TestComponent>();
 
-	ASSERT_THAT(test_component, Ne(nullptr));
+	ASSERT_THAT(result, Eq(0));
 }
 
 //-------------------------------------------------------------------

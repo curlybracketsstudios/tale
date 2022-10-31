@@ -1,11 +1,10 @@
-#include "CBEntityComponentSystem/Core/ComponentsContainer.h"
+#include "CBEntityComponentSystem/Core/ComponentIndexGenerator.h"
 
 //-------------------------------------------------------------------
 // CONSTRUCTOR - DESTRUCTOR
 //-------------------------------------------------------------------
 
-cb::ecs::ComponentsContainer::ComponentsContainer()
-	: m_components(std::vector<std::shared_ptr<cb::ecs::Component> >())
+cb::ecs::ComponentIndexGenerator::ComponentIndexGenerator()
 {
 }
 
