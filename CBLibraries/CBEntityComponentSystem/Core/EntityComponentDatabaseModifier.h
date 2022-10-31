@@ -16,10 +16,13 @@ namespace cb
 		class Component;
 		class ComponentsContainer;
 		class EntitiesComponentsContainer;
-		class EntityComponentDatabase
+		class EntityComponentDatabaseModifier
 		{
 		public:
-CBENTITYCOMPONENTSYSTEMSHARED_EXPORT													EntityComponentDatabase();
+CBENTITYCOMPONENTSYSTEMSHARED_EXPORT													EntityComponentDatabaseModifier(
+																							std::shared_ptr<cb::ecs::EntitiesComponentsContainer> entitiesComponentsContainer = std::make_shared<cb::ecs::EntitiesComponentsContainer>(),
+																							std::shared_ptr<cb::ecs::ComponentIndexGenerator> componentIndexGenerator = std::make_shared<cb::ecs::ComponentIndexGenerator>()
+																						);
 
 		public:
 CBENTITYCOMPONENTSYSTEMSHARED_EXPORT	bool											hasEntity(const cb::ecs::Entity& entity) const;
@@ -49,4 +52,4 @@ CBENTITYCOMPONENTSYSTEMSHARED_EXPORT	std::shared_ptr<cb::ecs::ComponentsContaine
 	}
 }
 
-#include "CBEntityComponentSystem/Core/EntityComponentDatabase.tpp"
+#include "CBEntityComponentSystem/Core/EntityComponentDatabaseModifier.tpp"

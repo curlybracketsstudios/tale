@@ -8,7 +8,7 @@ using namespace testing;
 //-------------------------------------------------------------------
 
 #include "CBEntityComponentSystem/Core/Component.h"
-#include "CBEntityComponentSystem/Core/EntityComponentDatabase.h"
+#include "CBEntityComponentSystem/Core/EntityComponentDatabaseModifier.h"
 #include "CBEntityComponentSystem/Core/Entity.h"
 #include "CBEntityComponentSystem/Core/EntityFactory.h"
 
@@ -25,7 +25,7 @@ public:
 
 TEST(AnEntityComponentDatabase, ShouldStoreEntityWhenComponentIsAddedToIt)
 {
-	cb::ecs::EntityComponentDatabase database;
+	cb::ecs::EntityComponentDatabaseModifier database;
 
 	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
 
@@ -40,7 +40,7 @@ TEST(AnEntityComponentDatabase, ShouldStoreEntityWhenComponentIsAddedToIt)
 
 TEST(AnEntityComponentDatabase, ShouldNotHaveEntitiesItDoesntHaveComponentsFrom)
 {
-	cb::ecs::EntityComponentDatabase database_retrieve;
+	cb::ecs::EntityComponentDatabaseModifier database_retrieve;
 	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
 
 	bool result = database_retrieve.hasEntity(entity);
@@ -52,7 +52,7 @@ TEST(AnEntityComponentDatabase, ShouldNotHaveEntitiesItDoesntHaveComponentsFrom)
 
 TEST(AnEntityComponentDatabase, ShouldNotHaveARemovedEntityAnymore)
 {
-	cb::ecs::EntityComponentDatabase database;
+	cb::ecs::EntityComponentDatabaseModifier database;
 
 	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
 

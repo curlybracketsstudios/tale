@@ -1,5 +1,6 @@
 V- Entity Component System library
 V- Refactor to use EntityComponentsContainer
+V- Refactor to use EntityComponentDatabaseModifier
 -- Split interface
 -- Querying EntityComponentDatabase
 -- Observing EntityComponentDatabase

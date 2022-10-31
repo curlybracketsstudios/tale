@@ -11,16 +11,16 @@ using namespace testing;
 
 #include "CBEntityComponentSystem/Core/Component.h"
 #include "CBEntityComponentSystem/Core/Entity.h"
-#include "CBEntityComponentSystem/Core/EntityComponentDatabase.h"
+#include "CBEntityComponentSystem/Core/EntityComponentDatabaseModifier.h"
 #include "CBEntityComponentSystem/Core/EntityFactory.h"
 
 #include <memory>
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabase, ShouldReturnAValidSharedPointerToAComponentOfTheGivenTypeWhenAdded)
+TEST(AnEntityComponentDatabaseModifier, ShouldReturnAValidSharedPointerToAComponentOfTheGivenTypeWhenAdded)
 {
-	cb::ecs::EntityComponentDatabase database;
+	cb::ecs::EntityComponentDatabaseModifier database;
 	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
 
 	std::shared_ptr<TestComponent> test_component = database.addComponentToEntity<TestComponent>(entity);
@@ -30,9 +30,9 @@ TEST(AnEntityComponentDatabase, ShouldReturnAValidSharedPointerToAComponentOfThe
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabase, ShouldReturnTheSameComponentFromTheEntityWhenItWasPreviouslyAdded)
+TEST(AnEntityComponentDatabaseModifier, ShouldReturnTheSameComponentFromTheEntityWhenItWasPreviouslyAdded)
 {
-	cb::ecs::EntityComponentDatabase database;
+	cb::ecs::EntityComponentDatabaseModifier database;
 	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
 	std::shared_ptr<TestComponent> test_component_added = database.addComponentToEntity<TestComponent>(entity);
 
@@ -43,9 +43,9 @@ TEST(AnEntityComponentDatabase, ShouldReturnTheSameComponentFromTheEntityWhenItW
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabase, ShouldReturnTheFirstComponentWhenSecondComponentOfSameTypeIsAdded)
+TEST(AnEntityComponentDatabaseModifier, ShouldReturnTheFirstComponentWhenSecondComponentOfSameTypeIsAdded)
 {
-	cb::ecs::EntityComponentDatabase database;
+	cb::ecs::EntityComponentDatabaseModifier database;
 	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
 	std::shared_ptr<TestComponent> test_component_added_first = database.addComponentToEntity<TestComponent>(entity);
 
@@ -56,9 +56,9 @@ TEST(AnEntityComponentDatabase, ShouldReturnTheFirstComponentWhenSecondComponent
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabase, ShouldReturnTheCorrectComponentWhenMultipleComponentsAreAdded)
+TEST(AnEntityComponentDatabaseModifier, ShouldReturnTheCorrectComponentWhenMultipleComponentsAreAdded)
 {
-	cb::ecs::EntityComponentDatabase database;
+	cb::ecs::EntityComponentDatabaseModifier database;
 	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
 	std::shared_ptr<TestComponent> test_component_added = database.addComponentToEntity<TestComponent>(entity);
 	std::shared_ptr<AnotherTestComponent> another_test_component_added = database.addComponentToEntity<AnotherTestComponent>(entity);
@@ -75,9 +75,9 @@ TEST(AnEntityComponentDatabase, ShouldReturnTheCorrectComponentWhenMultipleCompo
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabase, ShouldReturnNullptrWhenNonAddedComponentIsQueried)
+TEST(AnEntityComponentDatabaseModifier, ShouldReturnNullptrWhenNonAddedComponentIsQueried)
 {
-	cb::ecs::EntityComponentDatabase database;
+	cb::ecs::EntityComponentDatabaseModifier database;
 	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
 
 	std::shared_ptr<TestComponent> test_component = database.getComponentFromEntity<TestComponent>(entity);
@@ -87,9 +87,9 @@ TEST(AnEntityComponentDatabase, ShouldReturnNullptrWhenNonAddedComponentIsQuerie
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabase, ShouldCreateComponentWithCorrectConstructorArgumentsWhenGivenToAddComponent)
+TEST(AnEntityComponentDatabaseModifier, ShouldCreateComponentWithCorrectConstructorArgumentsWhenGivenToAddComponent)
 {
-	cb::ecs::EntityComponentDatabase database;
+	cb::ecs::EntityComponentDatabaseModifier database;
 	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
 
 	std::shared_ptr<TestComponent> test_component = database.addComponentToEntity<TestComponent>(entity, 3, .1415);
