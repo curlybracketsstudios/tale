@@ -55,3 +55,22 @@ TEST(AnEntityComponentDatabase, ShouldReturnTheFirstComponentWhenSecondComponent
 }
 
 //-------------------------------------------------------------------
+
+TEST(AnEntityComponentDatabase, ShouldReturnTheCorrectComponentWhenMultipleComponentsAreAdded)
+{
+	cb::ecs::EntityComponentDatabase database;
+	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
+	std::shared_ptr<TestComponent> test_component_added = database.addComponentToEntity<TestComponent>(entity);
+	std::shared_ptr<AnotherTestComponent> another_test_component_added = database.addComponentToEntity<AnotherTestComponent>(entity);
+	std::shared_ptr<AThirdTestComponent> a_third_test_component_added = database.addComponentToEntity<AThirdTestComponent>(entity);
+
+	std::shared_ptr<TestComponent> test_component_retrieved = database.getComponentFromEntity<TestComponent>(entity);
+	std::shared_ptr<AnotherTestComponent> another_test_component_retrieved = database.getComponentFromEntity<AnotherTestComponent>(entity);
+	std::shared_ptr<AThirdTestComponent> a_third_test_component_retrieved = database.getComponentFromEntity<AThirdTestComponent>(entity);
+
+	ASSERT_THAT(test_component_added, Eq(test_component_retrieved));
+	ASSERT_THAT(another_test_component_added, Eq(another_test_component_retrieved));
+	ASSERT_THAT(a_third_test_component_added, Eq(a_third_test_component_retrieved));
+}
+
+//-------------------------------------------------------------------

@@ -39,7 +39,7 @@ V- Refactor to ComponentIndexGenerator
 V- A ComponentsContainer should retrieve an added component
 V- A ComponentsContainer should retrieve correct component when multiple added
 V- An ECDatabase should only allow an entity to have one of each type of component
--- An ECDatabase should return correct component when multiple are added of different types
+V- An ECDatabase should return correct component when multiple are added of different types
 -- What about getting a not yet added component from entity -> nullptr?
 -- AddComponentToEntity should have constructor args
 -- Entity Component System library
