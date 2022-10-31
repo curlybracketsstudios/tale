@@ -69,3 +69,20 @@ TEST(AComponentIndexGenerator, ShouldReturn0AsIndexWhenFirstComponentAddedAgainA
 }
 
 //-------------------------------------------------------------------
+
+TEST(AComponentIndexGenerator, ShouldReturn2AsNumberOfComponentsWhenTwoTypesOfComponentsAreQueriedForIndices)
+{
+	cb::ecs::ComponentIndexGenerator component_index_generator;
+	component_index_generator.getComponentIndex<TestComponent>();
+	component_index_generator.getComponentIndex<AnotherTestComponent>();
+	component_index_generator.getComponentIndex<TestComponent>();
+	component_index_generator.getComponentIndex<AnotherTestComponent>();
+	component_index_generator.getComponentIndex<TestComponent>();
+	component_index_generator.getComponentIndex<AnotherTestComponent>();
+
+	auto result = component_index_generator.getNumberOfComponents();
+
+	ASSERT_THAT(result, Eq(2));
+}
+
+//-------------------------------------------------------------------
