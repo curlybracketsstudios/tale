@@ -18,11 +18,24 @@ using namespace testing;
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabaseModifier, ShouldReturnAValidSharedPointerToAComponentOfTheGivenTypeWhenAdded)
+class AnEntityComponentDatabaseModifier : public Test
 {
-	cb::ecs::EntityComponentDatabaseModifier database;
-	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
+public:
+	AnEntityComponentDatabaseModifier()
+		: database(cb::ecs::EntityComponentDatabaseModifier())
+		, entity(cb::ecs::EntityFactory::createEntity())
+	{
+	}
 
+public:
+	cb::ecs::EntityComponentDatabaseModifier	database;
+	cb::ecs::Entity								entity;
+};
+
+//-------------------------------------------------------------------
+
+TEST_F(AnEntityComponentDatabaseModifier, ShouldReturnAValidSharedPointerToAComponentOfTheGivenTypeWhenAdded)
+{
 	std::shared_ptr<TestComponent> test_component = database.addComponentToEntity<TestComponent>(entity);
 	
 	ASSERT_THAT(test_component, Ne(nullptr));
@@ -30,10 +43,8 @@ TEST(AnEntityComponentDatabaseModifier, ShouldReturnAValidSharedPointerToACompon
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabaseModifier, ShouldReturnTheSameComponentFromTheEntityWhenItWasPreviouslyAdded)
+TEST_F(AnEntityComponentDatabaseModifier, ShouldReturnTheSameComponentFromTheEntityWhenItWasPreviouslyAdded)
 {
-	cb::ecs::EntityComponentDatabaseModifier database;
-	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
 	std::shared_ptr<TestComponent> test_component_added = database.addComponentToEntity<TestComponent>(entity);
 
 	std::shared_ptr<TestComponent> test_component_retrieved = database.getComponentFromEntity<TestComponent>(entity);
@@ -43,10 +54,8 @@ TEST(AnEntityComponentDatabaseModifier, ShouldReturnTheSameComponentFromTheEntit
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabaseModifier, ShouldReturnTheFirstComponentWhenSecondComponentOfSameTypeIsAdded)
+TEST_F(AnEntityComponentDatabaseModifier, ShouldReturnTheFirstComponentWhenSecondComponentOfSameTypeIsAdded)
 {
-	cb::ecs::EntityComponentDatabaseModifier database;
-	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
 	std::shared_ptr<TestComponent> test_component_added_first = database.addComponentToEntity<TestComponent>(entity);
 
 	std::shared_ptr<TestComponent> test_component_added_second = database.addComponentToEntity<TestComponent>(entity);
@@ -56,10 +65,8 @@ TEST(AnEntityComponentDatabaseModifier, ShouldReturnTheFirstComponentWhenSecondC
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabaseModifier, ShouldReturnTheCorrectComponentWhenMultipleComponentsAreAdded)
+TEST_F(AnEntityComponentDatabaseModifier, ShouldReturnTheCorrectComponentWhenMultipleComponentsAreAdded)
 {
-	cb::ecs::EntityComponentDatabaseModifier database;
-	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
 	std::shared_ptr<TestComponent> test_component_added = database.addComponentToEntity<TestComponent>(entity);
 	std::shared_ptr<AnotherTestComponent> another_test_component_added = database.addComponentToEntity<AnotherTestComponent>(entity);
 	std::shared_ptr<AThirdTestComponent> a_third_test_component_added = database.addComponentToEntity<AThirdTestComponent>(entity);
@@ -75,11 +82,8 @@ TEST(AnEntityComponentDatabaseModifier, ShouldReturnTheCorrectComponentWhenMulti
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabaseModifier, ShouldReturnNullptrWhenNonAddedComponentIsQueried)
+TEST_F(AnEntityComponentDatabaseModifier, ShouldReturnNullptrWhenNonAddedComponentIsQueried)
 {
-	cb::ecs::EntityComponentDatabaseModifier database;
-	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
-
 	std::shared_ptr<TestComponent> test_component = database.getComponentFromEntity<TestComponent>(entity);
 
 	ASSERT_THAT(test_component, Eq(nullptr));
@@ -87,11 +91,8 @@ TEST(AnEntityComponentDatabaseModifier, ShouldReturnNullptrWhenNonAddedComponent
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabaseModifier, ShouldCreateComponentWithCorrectConstructorArgumentsWhenGivenToAddComponent)
+TEST_F(AnEntityComponentDatabaseModifier, ShouldCreateComponentWithCorrectConstructorArgumentsWhenGivenToAddComponent)
 {
-	cb::ecs::EntityComponentDatabaseModifier database;
-	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
-
 	std::shared_ptr<TestComponent> test_component = database.addComponentToEntity<TestComponent>(entity, 3, .1415);
 	std::shared_ptr<TestComponent> secon_test_component = database.addComponentToEntity<TestComponent>(entity, 1, .618);
 
