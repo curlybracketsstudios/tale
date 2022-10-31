@@ -11,8 +11,6 @@ using namespace testing;
 
 #include "CBEntityComponentSystem/Core/ComponentIndexGenerator.h"
 
-#include <memory>
-
 //-------------------------------------------------------------------
 
 TEST(AComponentIndexGenerator, ShouldBeConstructable)
@@ -29,6 +27,17 @@ TEST(AComponentIndexGenerator, ShouldReturn0AsIndexForFirstComponentAdded)
 	auto result = component_index_generator.getComponentIndex<TestComponent>();
 
 	ASSERT_THAT(result, Eq(0));
+}
+
+//-------------------------------------------------------------------
+
+TEST(AComponentIndexGenerator, ShouldReturn1AsIndexForSecondComponentAdded)
+{
+	cb::ecs::ComponentIndexGenerator component_index_generator;
+	component_index_generator.getComponentIndex<TestComponent>();
+	auto result = component_index_generator.getComponentIndex<AnotherTestComponent>();
+
+	ASSERT_THAT(result, Eq(1));
 }
 
 //-------------------------------------------------------------------
