@@ -75,7 +75,7 @@ TEST(AnEntityComponentDatabase, ShouldReturnTheCorrectComponentWhenMultipleCompo
 
 //-------------------------------------------------------------------
 
-TEST(AnEntityComponentDatabase, ShouldDoWhatWhenNonAddedComponentIsAsked)
+TEST(AnEntityComponentDatabase, ShouldReturnNullptrWhenNonAddedComponentIsQueried)
 {
 	cb::ecs::EntityComponentDatabase database;
 	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
@@ -83,6 +83,19 @@ TEST(AnEntityComponentDatabase, ShouldDoWhatWhenNonAddedComponentIsAsked)
 	std::shared_ptr<TestComponent> test_component = database.getComponentFromEntity<TestComponent>(entity);
 
 	ASSERT_THAT(test_component, Eq(nullptr));
+}
+
+//-------------------------------------------------------------------
+
+TEST(AnEntityComponentDatabase, ShouldCreateComponentWithCorrectConstructorArgumentsWhenGivenToAddComponent)
+{
+	cb::ecs::EntityComponentDatabase database;
+	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
+
+	std::shared_ptr<TestComponent> test_component = database.addComponentToEntity<TestComponent>(entity, 3, .1415);
+
+	ASSERT_THAT(test_component->m_integer_part, Eq(3));
+	ASSERT_THAT(test_component->m_fractional_part, DoubleEq(.1415));
 }
 
 //-------------------------------------------------------------------

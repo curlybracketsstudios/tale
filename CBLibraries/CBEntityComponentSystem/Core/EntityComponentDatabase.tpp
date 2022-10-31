@@ -6,10 +6,10 @@
 // PUBLIC
 //-------------------------------------------------------------------
 
-template<class T>
-std::shared_ptr<T> cb::ecs::EntityComponentDatabase::addComponentToEntity(const cb::ecs::Entity& entity)
+template<class T, typename... Args>
+std::shared_ptr<T> cb::ecs::EntityComponentDatabase::addComponentToEntity(const cb::ecs::Entity& entity, Args... args)
 {
-	addNewComponentOfTypeToEntityComponentsContainer<T>(entity);
+	addNewComponentOfTypeToEntityComponentsContainer<T, Args...>(entity, args...);
 	return getComponentFromEntity<T>(entity);
 }
 
@@ -42,11 +42,11 @@ bool cb::ecs::EntityComponentDatabase::hasComponentForEntity(const cb::ecs::Enti
 // PRIVATE
 //-------------------------------------------------------------------
 
-template <class T>
-void cb::ecs::EntityComponentDatabase::addNewComponentOfTypeToEntityComponentsContainer(const cb::ecs::Entity& entity)
+template <class T, typename... Args>
+void cb::ecs::EntityComponentDatabase::addNewComponentOfTypeToEntityComponentsContainer(const cb::ecs::Entity& entity, Args... args)
 {
 	cb::ecs::ComponentsContainer& components_container = getValidComponentsContainerForEntity(entity);
-	components_container.addComponentAtIndex(createComponentOfType<T>(), getIndexForComponent<T>());
+	components_container.addComponentAtIndex(createComponentOfType<T, Args...>(args...), getIndexForComponent<T>());
 }
 
 //-------------------------------------------------------------------
@@ -77,10 +77,10 @@ std::size_t cb::ecs::EntityComponentDatabase::getIndexForComponent()
 
 //-------------------------------------------------------------------
 
-template <class T>
-std::shared_ptr<T> cb::ecs::EntityComponentDatabase::createComponentOfType()
+template <class T, typename... Args>
+std::shared_ptr<T> cb::ecs::EntityComponentDatabase::createComponentOfType(Args... args)
 {
-	return std::make_shared<T>();
+	return std::make_shared<T>(args...);
 }
 
 //-------------------------------------------------------------------

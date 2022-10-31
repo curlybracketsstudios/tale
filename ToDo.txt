@@ -42,5 +42,5 @@ V- An ECDatabase should only allow an entity to have one of each type of compone
 V- An ECDatabase should return correct component when multiple are added of different types
 V- An ECDatabase should return nullptr when component which is not yet added is asked for
 V- Refactor ComponentsContainer should know nothing of ComponentIndexGenerator
--- AddComponentToEntity should have constructor args
+V- AddComponentToEntity should have constructor args
 -- Entity Component System library
