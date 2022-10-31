@@ -33,6 +33,8 @@ CBENTITYCOMPONENTSYSTEMSHARED_EXPORT												ComponentsContainer(
 											std::size_t								getComponentIndex();
 /*CBENTITYCOMPONENTSYSTEMSHARED_EXPORT*/	template <class T>
 											std::shared_ptr<T>						getTypedComponentAtIndex(std::size_t index);
+/*CBENTITYCOMPONENTSYSTEMSHARED_EXPORT*/	template <class T>
+											std::shared_ptr<T>						createTypedComponent();
 
 /*CBENTITYCOMPONENTSYSTEMSHARED_EXPORT*/	template <class T>
 											std::size_t								createValidComponentIndex();
