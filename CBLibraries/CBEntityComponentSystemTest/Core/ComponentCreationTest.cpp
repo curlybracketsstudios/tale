@@ -74,3 +74,15 @@ TEST(AnEntityComponentDatabase, ShouldReturnTheCorrectComponentWhenMultipleCompo
 }
 
 //-------------------------------------------------------------------
+
+TEST(AnEntityComponentDatabase, ShouldDoWhatWhenNonAddedComponentIsAsked)
+{
+	cb::ecs::EntityComponentDatabase database;
+	cb::ecs::Entity entity = cb::ecs::EntityFactory::createEntity();
+
+	std::shared_ptr<TestComponent> test_component = database.getComponentFromEntity<TestComponent>(entity);
+
+	ASSERT_THAT(test_component, Eq(nullptr));
+}
+
+//-------------------------------------------------------------------

@@ -12,7 +12,6 @@ add_library(${PROJECT_NAME} SHARED
 	Core/Component/ComponentIndexGenerator.tpp
 	Core/Component/ComponentsContainer.cpp
 	Core/Component/ComponentsContainer.h
-	Core/Component/ComponentsContainer.tpp
 	Core/Component.cpp
 	Core/Component.h
 	Core/Entity.cpp

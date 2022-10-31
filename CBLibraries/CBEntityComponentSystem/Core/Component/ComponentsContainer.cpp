@@ -4,17 +4,37 @@
 // CONSTRUCTOR - DESTRUCTOR
 //-------------------------------------------------------------------
 
-cb::ecs::ComponentsContainer::ComponentsContainer(
-	std::shared_ptr<cb::ecs::ComponentIndexGenerator> componentIndexGenerator
-)
-	: m_components(std::vector<std::shared_ptr<cb::ecs::Component> >())
-	, m_component_index_generator(componentIndexGenerator)
+cb::ecs::ComponentsContainer::ComponentsContainer(std::size_t initialSize)
+	: m_components(std::vector<std::shared_ptr<cb::ecs::Component> >(initialSize))
 {
 }
 
 //-------------------------------------------------------------------
 // PUBLIC
 //-------------------------------------------------------------------
+
+void cb::ecs::ComponentsContainer::addComponentAtIndex(std::shared_ptr<cb::ecs::Component> component, std::size_t index)
+{
+	if (!hasComponentAtIndex(index))
+	{
+		setComponentAtIndex(component, index);
+	}
+}
+
+//-------------------------------------------------------------------
+
+std::shared_ptr<cb::ecs::Component> cb::ecs::ComponentsContainer::getComponentAtIndex(std::size_t index)
+{
+	verifyAndUpdateComponentsContainerSize(index);
+	return m_components[index];
+}
+
+//-------------------------------------------------------------------
+
+bool cb::ecs::ComponentsContainer::hasComponentAtIndex(std::size_t index)
+{
+	return getComponentAtIndex(index) != nullptr;
+}
 
 //-------------------------------------------------------------------
 // PROTECTED
@@ -24,40 +44,26 @@ cb::ecs::ComponentsContainer::ComponentsContainer(
 // PRIVATE
 //-------------------------------------------------------------------
 
-void cb::ecs::ComponentsContainer::verifyAndUpdateComponentsContainerSize()
+void cb::ecs::ComponentsContainer::verifyAndUpdateComponentsContainerSize(std::size_t lastPossibleIndex)
 {
-	if (containerIsTooSmall())
+	if (containerIsTooSmall(lastPossibleIndex))
 	{
-		increaseContainerSize();
+		increaseContainerSize(lastPossibleIndex);
 	}
 }
 
 //-------------------------------------------------------------------
 
-bool cb::ecs::ComponentsContainer::containerIsTooSmall()
+bool cb::ecs::ComponentsContainer::containerIsTooSmall(std::size_t lastPossibleIndex)
 {
-	return m_components.size() < getNumberOfPossibleComponents();
+	return m_components.size() < lastPossibleIndex + 1;
 }
 
 //-------------------------------------------------------------------
 
-void cb::ecs::ComponentsContainer::increaseContainerSize()
+void cb::ecs::ComponentsContainer::increaseContainerSize(std::size_t lastPossibleIndex)
 {
-	m_components.resize(getNumberOfPossibleComponents(), nullptr);
-}
-
-//-------------------------------------------------------------------
-
-std::size_t cb::ecs::ComponentsContainer::getNumberOfPossibleComponents()
-{
-	return m_component_index_generator->getNumberOfComponents();
-}
-
-//-------------------------------------------------------------------
-
-std::shared_ptr<cb::ecs::Component> cb::ecs::ComponentsContainer::getComponentAtIndex(std::size_t index) const
-{
-	return m_components[index];
+	m_components.resize(lastPossibleIndex + 1, nullptr);
 }
 
 //-------------------------------------------------------------------
@@ -65,14 +71,6 @@ std::shared_ptr<cb::ecs::Component> cb::ecs::ComponentsContainer::getComponentAt
 void cb::ecs::ComponentsContainer::setComponentAtIndex(std::shared_ptr<cb::ecs::Component> component, std::size_t index)
 {
 	m_components[index] = component;
-}
-
-//-------------------------------------------------------------------
-
-bool cb::ecs::ComponentsContainer::hasNoComponentAtIndex(std::size_t index)
-{
-	std::shared_ptr<cb::ecs::Component> component = getComponentAtIndex(index);
-	return component == nullptr;
 }
 
 //-------------------------------------------------------------------

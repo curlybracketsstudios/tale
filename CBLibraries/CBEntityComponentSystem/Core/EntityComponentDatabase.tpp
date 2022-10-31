@@ -9,8 +9,8 @@
 template<class T>
 std::shared_ptr<T> cb::ecs::EntityComponentDatabase::addComponentToEntity(const cb::ecs::Entity& entity)
 {
-	cb::ecs::ComponentsContainer& components_container = m_entity_components[entity];
-	return components_container.addComponent<T>();
+	addNewComponentOfTypeToEntityComponentsContainer<T>(entity);
+	return getComponentFromEntity<T>(entity);
 }
 
 //-------------------------------------------------------------------
@@ -18,16 +18,20 @@ std::shared_ptr<T> cb::ecs::EntityComponentDatabase::addComponentToEntity(const 
 template<class T>
 std::shared_ptr<T> cb::ecs::EntityComponentDatabase::getComponentFromEntity(const cb::ecs::Entity& entity)
 {
-	std::shared_ptr<T> component_from_entity = std::make_shared<T>();
-
-	auto it_entity = m_entity_components.find(entity);
-	if (it_entity != m_entity_components.end())
+	std::shared_ptr<T> component = nullptr;
+	if (hasComponentForEntity<T>(entity))
 	{
-		cb::ecs::ComponentsContainer& components_container = it_entity->second;
-		component_from_entity = components_container.getComponent<T>();
+		component = getExistingComponentForKnownEntity<T>(entity);
 	}
+	return component;
+}
 
-	return component_from_entity;
+//-------------------------------------------------------------------
+
+template <class T>
+bool cb::ecs::EntityComponentDatabase::hasComponentForEntity(const cb::ecs::Entity& entity)
+{
+	return hasEntity(entity) && knownEntityHasComponent<T>(entity);
 }
 
 //-------------------------------------------------------------------
@@ -36,4 +40,47 @@ std::shared_ptr<T> cb::ecs::EntityComponentDatabase::getComponentFromEntity(cons
 
 //-------------------------------------------------------------------
 // PRIVATE
+//-------------------------------------------------------------------
+
+template <class T>
+void cb::ecs::EntityComponentDatabase::addNewComponentOfTypeToEntityComponentsContainer(const cb::ecs::Entity& entity)
+{
+	cb::ecs::ComponentsContainer& components_container = getValidComponentsContainerForEntity(entity);
+	components_container.addComponentAtIndex(createComponentOfType<T>(), getIndexForComponent<T>());
+}
+
+//-------------------------------------------------------------------
+
+template <class T>
+std::shared_ptr<T> cb::ecs::EntityComponentDatabase::getExistingComponentForKnownEntity(const cb::ecs::Entity& entity)
+{
+	cb::ecs::ComponentsContainer& components_container = getValidComponentsContainerForEntity(entity);
+	return std::dynamic_pointer_cast<T>(components_container.getComponentAtIndex(getIndexForComponent<T>()));
+}
+
+//-------------------------------------------------------------------
+
+template <class T>
+bool cb::ecs::EntityComponentDatabase::knownEntityHasComponent(const cb::ecs::Entity& entity)
+{
+	cb::ecs::ComponentsContainer& components_container = getValidComponentsContainerForEntity(entity);
+	return components_container.hasComponentAtIndex(getIndexForComponent<T>());
+}
+
+//-------------------------------------------------------------------
+
+template <class T>
+std::size_t cb::ecs::EntityComponentDatabase::getIndexForComponent()
+{
+	return m_component_index_generator->getComponentIndex<T>();
+}
+
+//-------------------------------------------------------------------
+
+template <class T>
+std::shared_ptr<T> cb::ecs::EntityComponentDatabase::createComponentOfType()
+{
+	return std::make_shared<T>();
+}
+
 //-------------------------------------------------------------------
