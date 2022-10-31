@@ -1,5 +1,6 @@
 #include "CBEntityComponentSystem/Core/EntityComponentDatabase.h"
 
+#include "CBEntityComponentSystem/Core/EntitiesComponentsContainer.h"
 #include "CBEntityComponentSystem/Core/Component/ComponentIndexGenerator.h"
 
 //-------------------------------------------------------------------
@@ -7,7 +8,7 @@
 //-------------------------------------------------------------------
 
 cb::ecs::EntityComponentDatabase::EntityComponentDatabase()
-	: m_entity_components(std::map<cb::ecs::Entity, cb::ecs::ComponentsContainer>())
+	: m_entities_components_container(std::make_shared<cb::ecs::EntitiesComponentsContainer>())
 	, m_component_index_generator(std::make_shared<cb::ecs::ComponentIndexGenerator>())
 {
 }
@@ -18,18 +19,14 @@ cb::ecs::EntityComponentDatabase::EntityComponentDatabase()
 
 bool cb::ecs::EntityComponentDatabase::hasEntity(const cb::ecs::Entity& entity) const
 {
-	return m_entity_components.find(entity) != m_entity_components.end();
+	return m_entities_components_container->hasEntity(entity);
 }
 
 //-------------------------------------------------------------------
 
 void cb::ecs::EntityComponentDatabase::removeEntity(const cb::ecs::Entity& entity)
 {
-	auto it_entity = m_entity_components.find(entity);
-	if (it_entity != m_entity_components.end())
-	{
-		m_entity_components.erase(it_entity);
-	}
+	m_entities_components_container->removeEntity(entity);
 }
 
 //-------------------------------------------------------------------
@@ -40,27 +37,11 @@ void cb::ecs::EntityComponentDatabase::removeEntity(const cb::ecs::Entity& entit
 // PRIVATE
 //-------------------------------------------------------------------
 
-cb::ecs::ComponentsContainer& cb::ecs::EntityComponentDatabase::getValidComponentsContainerForEntity(const cb::ecs::Entity& entity)
+std::shared_ptr<cb::ecs::ComponentsContainer> cb::ecs::EntityComponentDatabase::getComponentsContainerForEntity(const cb::ecs::Entity& entity)
 {
-	if (!hasEntity(entity))
+	if (!m_entities_components_container->hasEntity(entity))
 	{
-		addComponentsContainerForEntity(entity);
+		m_entities_components_container->addEntity(entity);
 	}
-	return getExistingComponentsContainerForEntity(entity);
+	return m_entities_components_container->getComponentsContainerForEntity(entity);
 }
-
-//-------------------------------------------------------------------
-
-void cb::ecs::EntityComponentDatabase::addComponentsContainerForEntity(const cb::ecs::Entity& entity)
-{
-	m_entity_components.insert(std::make_pair(entity, cb::ecs::ComponentsContainer(m_component_index_generator->getNumberOfComponents())));
-}
-
-//-------------------------------------------------------------------
-
-cb::ecs::ComponentsContainer& cb::ecs::EntityComponentDatabase::getExistingComponentsContainerForEntity(const cb::ecs::Entity& entity)
-{
-	return m_entity_components[entity];
-}
-
-//-------------------------------------------------------------------

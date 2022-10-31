@@ -1,3 +1,5 @@
+#include "CBEntityComponentSystem/Core/EntitiesComponentsContainer.h"
+
 //-------------------------------------------------------------------
 // CONSTRUCTOR - DESTRUCTOR
 //-------------------------------------------------------------------
@@ -9,8 +11,21 @@
 template<class T, typename... Args>
 std::shared_ptr<T> cb::ecs::EntityComponentDatabase::addComponentToEntity(const cb::ecs::Entity& entity, Args... args)
 {
-	addNewComponentOfTypeToEntityComponentsContainer<T, Args...>(entity, args...);
+	std::shared_ptr<cb::ecs::ComponentsContainer> components_container = getComponentsContainerForEntity(entity);
+	if (!components_container->hasComponentAtIndex(getIndexForComponent<T>()))
+	{
+		components_container->addComponentAtIndex(createComponentOfType<T, Args...>(args...), getIndexForComponent<T>());
+	}
 	return getComponentFromEntity<T>(entity);
+}
+
+//-------------------------------------------------------------------
+
+template<class T>
+void cb::ecs::EntityComponentDatabase::addComponentToEntity(const cb::ecs::Entity& entity, std::shared_ptr<T> component)
+{
+	std::shared_ptr<cb::ecs::ComponentsContainer> components_container = getComponentsContainerForEntity(entity);
+	components_container->addComponentAtIndex(component, getIndexForComponent<T>());
 }
 
 //-------------------------------------------------------------------
@@ -18,12 +33,9 @@ std::shared_ptr<T> cb::ecs::EntityComponentDatabase::addComponentToEntity(const 
 template<class T>
 std::shared_ptr<T> cb::ecs::EntityComponentDatabase::getComponentFromEntity(const cb::ecs::Entity& entity)
 {
+	std::shared_ptr<cb::ecs::ComponentsContainer> components_container = getComponentsContainerForEntity(entity);
+	return std::dynamic_pointer_cast<T>(components_container->getComponentAtIndex(getIndexForComponent<T>()));
 	std::shared_ptr<T> component = nullptr;
-	if (hasComponentForEntity<T>(entity))
-	{
-		component = getExistingComponentForKnownEntity<T>(entity);
-	}
-	return component;
 }
 
 //-------------------------------------------------------------------
@@ -31,7 +43,8 @@ std::shared_ptr<T> cb::ecs::EntityComponentDatabase::getComponentFromEntity(cons
 template <class T>
 bool cb::ecs::EntityComponentDatabase::hasComponentForEntity(const cb::ecs::Entity& entity)
 {
-	return hasEntity(entity) && knownEntityHasComponent<T>(entity);
+	std::shared_ptr<cb::ecs::ComponentsContainer> components_container = m_entities_components_container->getComponentsContainerForEntity(entity);
+	return components_container->hasComponentAtIndex(getIndexForComponent<T>());
 }
 
 //-------------------------------------------------------------------
@@ -40,33 +53,6 @@ bool cb::ecs::EntityComponentDatabase::hasComponentForEntity(const cb::ecs::Enti
 
 //-------------------------------------------------------------------
 // PRIVATE
-//-------------------------------------------------------------------
-
-template <class T, typename... Args>
-void cb::ecs::EntityComponentDatabase::addNewComponentOfTypeToEntityComponentsContainer(const cb::ecs::Entity& entity, Args... args)
-{
-	cb::ecs::ComponentsContainer& components_container = getValidComponentsContainerForEntity(entity);
-	components_container.addComponentAtIndex(createComponentOfType<T, Args...>(args...), getIndexForComponent<T>());
-}
-
-//-------------------------------------------------------------------
-
-template <class T>
-std::shared_ptr<T> cb::ecs::EntityComponentDatabase::getExistingComponentForKnownEntity(const cb::ecs::Entity& entity)
-{
-	cb::ecs::ComponentsContainer& components_container = getValidComponentsContainerForEntity(entity);
-	return std::dynamic_pointer_cast<T>(components_container.getComponentAtIndex(getIndexForComponent<T>()));
-}
-
-//-------------------------------------------------------------------
-
-template <class T>
-bool cb::ecs::EntityComponentDatabase::knownEntityHasComponent(const cb::ecs::Entity& entity)
-{
-	cb::ecs::ComponentsContainer& components_container = getValidComponentsContainerForEntity(entity);
-	return components_container.hasComponentAtIndex(getIndexForComponent<T>());
-}
-
 //-------------------------------------------------------------------
 
 template <class T>

@@ -13,6 +13,7 @@ add_executable(${PROJECT_NAME}
 	Core/Component/ComponentIndexGenerationTest.cpp
 	Core/Component/ComponentsContainerTest.cpp
 	Core/ComponentCreationTest.cpp
+	Core/EntitiesComponentsContainerTest.cpp
 	Core/EntityComparingTest.cpp
     Core/EntityCreationTest.cpp
 	Core/EntityStoringTest.cpp

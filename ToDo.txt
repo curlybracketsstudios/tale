@@ -1,47 +1,5 @@
-V- Construct ecdatabase
-
-V- Create entity
-V- refactor to core subfolder
-V- refactor to EntityCreationTest in core
-V- non db created entity should be null
-V- two db created entities should not be equal
-V- refactor null check to use the id
-V- introduce cbbase
-V- a guid should be null when constructed
-V- a guid should not be null when created
-V- Two guids should be equal when constructed
-V- Two guids should not be equal when created
-V- Refactor guid test to subdirectory
-V- Refactor guid creation test to guid test
-V- introduce cbbase guid
-V- refactor entity guid to use cbbase guid
-V- An ECDatabase should have an entity it creates
-V- An ECDatabase should not have an entity it does not create
-V- A null guid should be the smallest
-V- A created guid should be bigger than null guid
-V- refactor guid comparison to only use == and <
-V- An ECDatabase should not have a removed entity anymore
-V- Refactor some test to EntityStoringTest from EntityCreationTest
-V- An ECDatabase should return a valid pointer of the correct type when a component is added to an entity
-V- An ECDatabase should return the correct pointer after the component was added to the entity and retrieved
-V- Refactor to use EntityFactory
-V- TestComponent in separate header for reuse
-V- A ComponentsContainer should be constructable
-V- It should be able to add component to componentscontainer
-V- component should be retrievable from components container
-V- Refactor vector of components to ComponentsContainer
-V- A ComponentIndexGenerator should be constructable
-V- A ComponentIndexGenerator should return 0 for first component generated index for
-V- A ComponentIndexGenerator should return 1 for second component generated index for
-V- A ComponentIndexGenerator should return 2 for third component generated index for
-V- A ComponentIndexGenerator should return 0 if index requested of first added after multiple added
-V- Refactor to ComponentIndexGenerator
-V- A ComponentsContainer should retrieve an added component
-V- A ComponentsContainer should retrieve correct component when multiple added
-V- An ECDatabase should only allow an entity to have one of each type of component
-V- An ECDatabase should return correct component when multiple are added of different types
-V- An ECDatabase should return nullptr when component which is not yet added is asked for
-V- Refactor ComponentsContainer should know nothing of ComponentIndexGenerator
-V- AddComponentToEntity should have constructor args
-V- When second component of same type is added with other args, nothing should change
--- Entity Component System library
+V- Entity Component System library
+V- Refactor to use EntityComponentsContainer
+-- Split interface
+-- Querying EntityComponentDatabase
+-- Observing EntityComponentDatabase
