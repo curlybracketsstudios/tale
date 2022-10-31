@@ -37,8 +37,7 @@ V- A ComponentIndexGenerator should return 2 for third component generated index
 V- A ComponentIndexGenerator should return 0 if index requested of first added after multiple added
 V- Refactor to ComponentIndexGenerator
 V- A ComponentsContainer should retrieve an added component
--- A ComponentsContainer should retrieve correct component when multiple added
-X- A ComponentsContainer should have unique index for each type of component
+V- A ComponentsContainer should retrieve correct component when multiple added
 X- An ECDatabase should only allow an entity to have one of each type of component
 -- An ECDatabase should return correct component when multiple are added of different types
 -- What about getting a not yet added component from entity -> nullptr?

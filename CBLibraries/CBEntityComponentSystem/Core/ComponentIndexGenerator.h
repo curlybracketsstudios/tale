@@ -21,6 +21,8 @@ CBENTITYCOMPONENTSYSTEMSHARED_EXPORT								ComponentIndexGenerator();
 /*CBENTITYCOMPONENTSYSTEMSHARED_EXPORT*/	template <class T>
 											std::size_t				getComponentIndex();
 
+											std::size_t				getNumberOfComponents() const;
+
 		private:
 			std::unordered_map<std::type_index, std::size_t>		m_component_type_to_index;
 		};
