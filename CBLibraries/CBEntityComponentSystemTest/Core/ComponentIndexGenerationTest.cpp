@@ -35,9 +35,23 @@ TEST(AComponentIndexGenerator, ShouldReturn1AsIndexForSecondComponentAdded)
 {
 	cb::ecs::ComponentIndexGenerator component_index_generator;
 	component_index_generator.getComponentIndex<TestComponent>();
+	
 	auto result = component_index_generator.getComponentIndex<AnotherTestComponent>();
 
 	ASSERT_THAT(result, Eq(1));
+}
+
+//-------------------------------------------------------------------
+
+TEST(AComponentIndexGenerator, ShouldReturn2AsIndexForThirdComponentAdded)
+{
+	cb::ecs::ComponentIndexGenerator component_index_generator;
+	component_index_generator.getComponentIndex<TestComponent>();
+	component_index_generator.getComponentIndex<AnotherTestComponent>();
+
+	auto result = component_index_generator.getComponentIndex<AThirdTestComponent>();
+
+	ASSERT_THAT(result, Eq(2));
 }
 
 //-------------------------------------------------------------------

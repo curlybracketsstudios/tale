@@ -32,8 +32,8 @@ V- component should be retrievable from components container
 V- Refactor vector of components to ComponentsContainer
 V- A ComponentIndexGenerator should be constructable
 V- A ComponentIndexGenerator should return 0 for first component generated index for
--- A ComponentIndexGenerator should return 1 for second component generated index for
--- A ComponentIndexGenerator should return 2 for third component generated index for
+V- A ComponentIndexGenerator should return 1 for second component generated index for
+V- A ComponentIndexGenerator should return 2 for third component generated index for
 -- A ComponentIndexGenerator should return 0 if index requested of first added after multiple added
 -- Refactor to ComponentIndexGenerator
 X- A ComponentContainer should have unique index for each type of component
