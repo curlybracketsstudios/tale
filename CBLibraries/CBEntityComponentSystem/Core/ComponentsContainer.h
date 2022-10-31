@@ -2,6 +2,8 @@
 
 #include "CBEntityComponentSystem/CBEntityComponentSystemLibrary.h"
 
+#include "CBEntityComponentSystem/Core/ComponentIndexGenerator.h"
+
 #include <memory>
 #include <typeindex>
 #include <typeinfo>
@@ -16,7 +18,9 @@ namespace cb
 		class ComponentsContainer
 		{
 		public:
-CBENTITYCOMPONENTSYSTEMSHARED_EXPORT								ComponentsContainer();
+CBENTITYCOMPONENTSYSTEMSHARED_EXPORT								ComponentsContainer(
+																		std::shared_ptr<cb::ecs::ComponentIndexGenerator> componentIndexGenerator = std::make_shared<cb::ecs::ComponentIndexGenerator>()
+																		);
 
 		public:
 /*CBENTITYCOMPONENTSYSTEMSHARED_EXPORT*/	template <class T>
@@ -26,6 +30,7 @@ CBENTITYCOMPONENTSYSTEMSHARED_EXPORT								ComponentsContainer();
 
 		private:
 			std::vector<std::shared_ptr<cb::ecs::Component> >		m_components;
+			std::shared_ptr<cb::ecs::ComponentIndexGenerator>		m_component_index_generator;
 		};
 	}
 }
