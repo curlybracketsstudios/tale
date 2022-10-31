@@ -2,7 +2,7 @@
 
 #include "CBEntityComponentSystem/CBEntityComponentSystemLibrary.h"
 
-#include "CBEntityComponentSystem/Core/ComponentIndexGenerator.h"
+#include "CBEntityComponentSystem/Core/Component/ComponentIndexGenerator.h"
 
 #include <memory>
 #include <typeindex>
@@ -58,4 +58,4 @@ CBENTITYCOMPONENTSYSTEMSHARED_EXPORT		bool									hasNoComponentAtIndex(std::si
 	}
 }
 
-#include "CBEntityComponentSystem/Core/ComponentsContainer.tpp"
+#include "CBEntityComponentSystem/Core/Component/ComponentsContainer.tpp"

@@ -2,7 +2,7 @@
 
 #include "CBEntityComponentSystem/CBEntityComponentSystemLibrary.h"
 
-#include "CBEntityComponentSystem/Core/ComponentsContainer.h" 
+#include "CBEntityComponentSystem/Core/Component/ComponentsContainer.h" 
 #include "CBEntityComponentSystem/Core/Entity.h"
 
 #include <map>

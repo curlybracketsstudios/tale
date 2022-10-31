@@ -39,4 +39,4 @@ CBENTITYCOMPONENTSYSTEMSHARED_EXPORT		std::size_t				getNumberOfComponents() con
 	}
 }
 
-#include "CBEntityComponentSystem/Core/ComponentIndexGenerator.tpp"
+#include "CBEntityComponentSystem/Core/Component/ComponentIndexGenerator.tpp"

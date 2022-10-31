@@ -9,7 +9,7 @@ using namespace testing;
 
 //-------------------------------------------------------------------
 
-#include "CBEntityComponentSystem/Core/ComponentsContainer.h"
+#include "CBEntityComponentSystem/Core/Component/ComponentsContainer.h"
 
 #include <memory>
 

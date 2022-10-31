@@ -6,17 +6,20 @@ project(${PROJECT_NAME} VERSION 1.0.0 DESCRIPTION "CBEntityComponentSystem is th
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-add_library(${PROJECT_NAME} SHARED
+add_library(${PROJECT_NAME} SHARED	
+	Core/Component/ComponentIndexGenerator.cpp
+	Core/Component/ComponentIndexGenerator.h
+	Core/Component/ComponentIndexGenerator.tpp
+	Core/Component/ComponentsContainer.cpp
+	Core/Component/ComponentsContainer.h
+	Core/Component/ComponentsContainer.tpp
 	Core/Component.cpp
 	Core/Component.h
-	Core/ComponentIndexGenerator.cpp
-	Core/ComponentIndexGenerator.h
-	Core/ComponentsContainer.cpp
-	Core/ComponentsContainer.h
 	Core/Entity.cpp
 	Core/Entity.h
 	Core/EntityComponentDatabase.cpp
 	Core/EntityComponentDatabase.h
+	Core/EntityComponentDatabase.tpp
 	Core/EntityFactory.cpp
 	Core/EntityFactory.h
 	CBEntityComponentSystemLibrary.h

@@ -1,4 +1,4 @@
-#include "CBEntityComponentSystem/Core/ComponentIndexGenerator.h"
+#include "CBEntityComponentSystem/Core/Component/ComponentIndexGenerator.h"
 
 //-------------------------------------------------------------------
 // CONSTRUCTOR - DESTRUCTOR
