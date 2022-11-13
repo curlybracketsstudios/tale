@@ -3,7 +3,6 @@
 #include "CBEntityComponentSystem/CBEntityComponentSystemLibrary.h"
 
 #include <typeindex>
-#include <typeinfo>
 #include <unordered_map>
 
 namespace cb

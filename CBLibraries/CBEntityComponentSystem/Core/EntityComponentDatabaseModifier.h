@@ -2,10 +2,6 @@
 
 #include "CBEntityComponentSystem/CBEntityComponentSystemLibrary.h"
 
-#include "CBEntityComponentSystem/Core/Component/ComponentsContainer.h" 
-#include "CBEntityComponentSystem/Core/Entity.h"
-
-#include <map>
 #include <memory>
 #include <vector>
 
@@ -14,14 +10,16 @@ namespace cb
 	namespace ecs
 	{
 		class Component;
+		class ComponentIndexGenerator;
 		class ComponentsContainer;
 		class EntitiesComponentsContainer;
+		class Entity;
 		class EntityComponentDatabaseModifier
 		{
 		public:
 CBENTITYCOMPONENTSYSTEMSHARED_EXPORT													EntityComponentDatabaseModifier(
-																							std::shared_ptr<cb::ecs::EntitiesComponentsContainer> entitiesComponentsContainer = std::make_shared<cb::ecs::EntitiesComponentsContainer>(),
-																							std::shared_ptr<cb::ecs::ComponentIndexGenerator> componentIndexGenerator = std::make_shared<cb::ecs::ComponentIndexGenerator>()
+																							std::shared_ptr<cb::ecs::EntitiesComponentsContainer> entitiesComponentsContainer = nullptr,
+																							std::shared_ptr<cb::ecs::ComponentIndexGenerator> componentIndexGenerator = nullptr
 																						);
 
 		public:

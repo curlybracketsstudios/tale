@@ -19,6 +19,8 @@ add_library(${PROJECT_NAME} SHARED
 	Core/EntityComponentDatabaseModifier.cpp
 	Core/EntityComponentDatabaseModifier.h
 	Core/EntityComponentDatabaseModifier.tpp
+	Core/EntityComponentDatabaseQuerier.cpp
+	Core/EntityComponentDatabaseQuerier.h
 	Core/EntitiesComponentsContainer.cpp
 	Core/EntitiesComponentsContainer.h
 	Core/EntityFactory.cpp

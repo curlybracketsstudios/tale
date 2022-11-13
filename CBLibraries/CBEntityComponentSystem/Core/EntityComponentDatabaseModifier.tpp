@@ -1,3 +1,5 @@
+#include "CBEntityComponentSystem/Core/Component/ComponentIndexGenerator.h"
+#include "CBEntityComponentSystem/Core/Component/ComponentsContainer.h"
 #include "CBEntityComponentSystem/Core/EntitiesComponentsContainer.h"
 
 //-------------------------------------------------------------------
